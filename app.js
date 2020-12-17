@@ -35,8 +35,10 @@ class UI{
 
     //Borrar producto
     deleteProduct(element){
-        if(element.name === 'delete')
+        if(element.name === 'delete'){
             element.parentElement.parentElement.parentElement.remove()
+            this.showMessage('Eliminado satisfactoriamente', 'danger')
+        }
     }
 
     //Mostrar alerta 
@@ -48,6 +50,9 @@ class UI{
         const container = document.getElementById('app-container')
         const app = document.getElementById('app')
         container.insertBefore(div, app)
+        setTimeout(() => {
+            document.querySelector('.alert').remove()
+        }, 3000)
     }
 }
 
