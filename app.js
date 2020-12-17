@@ -30,3 +30,13 @@ class UI{
 
     }
 }
+
+
+//DOM eventos
+document.getElementById('product-form').addEventListener('submit', () => {
+    name = document.getElementById('name').value
+    price = document.getElementById('price').value
+    year = document.getElementById('year').value
+    console.log(`${name} ${year} ${price}`)
+
+})
