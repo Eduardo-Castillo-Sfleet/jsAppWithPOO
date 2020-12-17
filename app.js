@@ -1,9 +1,5 @@
 //Clase de productos
-class Producto{
-
-    //Propiedades
-
-
+class Product{
     //Constructor
     constructor(name, price, year){
         this.name = name
@@ -33,10 +29,16 @@ class UI{
 
 
 //DOM eventos
-document.getElementById('product-form').addEventListener('submit', () => {
+document.getElementById('product-form').addEventListener('submit', (e) => {
     name = document.getElementById('name').value
     price = document.getElementById('price').value
     year = document.getElementById('year').value
-    console.log(`${name} ${year} ${price}`)
+    //console.log(`${name} ${year} ${price}`)
 
+    //Instancia de producto
+    const product = new Product(name, price, year)
+
+
+
+    e.preventDefault()
 })
