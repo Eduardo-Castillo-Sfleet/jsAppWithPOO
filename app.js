@@ -18,22 +18,29 @@ class UI{
         element.innerHTML = `
             <div class="card text-center mb-4">
                 <div class="card-body">
-                    <bold>${product.name.toUpperCase()}</bold><br>
-                    Precio: <strong>${product.price}</strong>
-                    Año: <strong>${product.year}</strong>
+                    Nombre: ${product.name.toUpperCase()}
+                    Precio: $${product.price}
+                    Año:${product.year}
+                    <a href="#" class="btn btn-danger" name="delete">Borrar</a>
                     </div>
             </div>
         `
         productList.appendChild(element)
     }
 
-    //Borrar producto
-    deleteProducto(){
+    //Resetear formulario
+    resetForm(){
+        document.getElementById('product-form').reset()
+    }
 
+    //Borrar producto
+    deleteProduct(element){
+        if(element.name === 'delete')
+            element.parentElement.parentElement.parentElement.remove()
     }
 
     //Mostrar alerta 
-    showMessage(){
+    showMessage(message, cssClass){
 
     }
 }
@@ -51,7 +58,13 @@ document.getElementById('product-form').addEventListener('submit', (e) => {
     const ui = new UI()
 
     ui.addProduct(product)
+    ui.resetForm()
 
 
     e.preventDefault()
+})
+
+document.getElementById('product-list').addEventListener('click', (e) => {
+    const ui = new UI()
+    ui.deleteProduct(e.target)
 })
