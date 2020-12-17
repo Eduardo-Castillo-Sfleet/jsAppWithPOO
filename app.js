@@ -41,7 +41,13 @@ class UI{
 
     //Mostrar alerta 
     showMessage(message, cssClass){
-
+        const div = document.createElement('div')
+        div.className = `alert alert-${cssClass} mt-3`
+        div.appendChild(document.createTextNode(message))
+        // Mostrando en DOM
+        const container = document.getElementById('app-container')
+        const app = document.getElementById('app')
+        container.insertBefore(div, app)
     }
 }
 
@@ -57,9 +63,10 @@ document.getElementById('product-form').addEventListener('submit', (e) => {
     const product = new Product(name, price, year)
     const ui = new UI()
 
+    //UI events    
     ui.addProduct(product)
     ui.resetForm()
-
+    ui.showMessage('Producto agregado', 'success')
 
     e.preventDefault()
 })
