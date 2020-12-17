@@ -68,10 +68,14 @@ document.getElementById('product-form').addEventListener('submit', (e) => {
     const product = new Product(name, price, year)
     const ui = new UI()
 
-    //UI events    
+    //UI events   
+    if(name === '' || price === '' || year === '') {
+        e.preventDefault()
+        return ui.showMessage('Completa los campos del producto', 'info');
+    }
     ui.addProduct(product)
     ui.resetForm()
-    ui.showMessage('Producto agregado', 'success')
+    ui.showMessage('Producto agregado', 'success')   
 
     e.preventDefault()
 })
