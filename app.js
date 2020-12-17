@@ -12,8 +12,19 @@ class Product{
 //Clase de la lista UI para despliegue de información
 class UI{
     //Metodo para agregar
-    addProduct(){
-
+    addProduct(product){
+        const productList = document.getElementById('product-list')
+        const element = document.createElement('div')
+        element.innerHTML = `
+            <div class="card text-center mb-4">
+                <div class="card-body">
+                    <bold>${product.name.toUpperCase()}</bold><br>
+                    Precio: <strong>${product.price}</strong>
+                    Año: <strong>${product.year}</strong>
+                    </div>
+            </div>
+        `
+        productList.appendChild(element)
     }
 
     //Borrar producto
@@ -37,7 +48,9 @@ document.getElementById('product-form').addEventListener('submit', (e) => {
 
     //Instancia de producto
     const product = new Product(name, price, year)
+    const ui = new UI()
 
+    ui.addProduct(product)
 
 
     e.preventDefault()
